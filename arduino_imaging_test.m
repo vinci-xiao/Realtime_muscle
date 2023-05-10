@@ -16,7 +16,7 @@ imdl.reconst_type = 'difference';
 img = mk_image(imdl, 2);
 vh = fwd_solve(img);
 
-% fileID = fopen('data_larynx_50k_1.txt','w');
+% fileID = fopen('sittttt.txt','w');
 
 while true
     line = readline(s);
