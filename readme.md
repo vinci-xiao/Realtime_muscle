@@ -11,7 +11,7 @@
 ### Matlab("COM9")
 ```
 run C:\eidors-v3.11-ng\eidors\startup.m
-run C:\Users\VIN\Documents\2023_SPRING-MAS.600_Human2_0\EIT-kit\arduino_imaging_a.m
+run C:\Users\VIN\Documents\2023_SPRING-MAS.600_Human2_0\EIT-kit\arduino_imaging_test.m
 ```
 
 ### Record Serial data from Arduino
