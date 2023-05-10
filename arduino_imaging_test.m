@@ -16,7 +16,9 @@ imdl.reconst_type = 'difference';
 img = mk_image(imdl, 2);
 vh = fwd_solve(img);
 
-% fileID = fopen('sittttt.txt','w');
+show_fem(img, [0,1]);
+
+fileID = fopen('sittttt4.txt','w');
 
 while true
     line = readline(s);
@@ -24,6 +26,7 @@ while true
     
     if state == 0
         disp(line);
+        fprintf(fileID, line);
         if strncmp(line, "origin frame", 12)
             % Read data
             for i = 1:(num_electrodes*num_electrodes)
@@ -35,7 +38,7 @@ while true
             state = 1;
             disp("origin set");
 %             fprintf(fileID, 'origin frame\r\n');
-%             fprintf(fileID, '%.4f\r\n', origin_frame);
+            fprintf(fileID, '%.4f\r\n', origin_frame);
         end
     else
         if strncmp(line, "frame", 5)
@@ -44,15 +47,16 @@ while true
             for i = 1:(num_electrodes*num_electrodes)
                 frame(i) = str2double(readline(s));
             end
-%             fprintf(fileID, 'frame\r\n');
-%             fprintf(fileID, '%.4f\r\n', frame);
+            fprintf(fileID, 'frame\r\n');
+            fprintf(fileID, '%.4f\r\n', frame);
             
             %show_slices(inv_solve(imdl, old_frame, frame));
 %             show_slices(inv_solve(imdl, origin_frame, frame));
 %             show_slices(inv_solve(imdl, vh, frame));
+            %rec_img = inv_solve(imdl, vh, frame);
             rec_img = inv_solve(imdl, vh, frame);
             rec_img.calc_colours.ref_level = 0;
-%             rec_img.calc_colours.clim = [1]; % play around with this number and pick one that fits the specific phantom & measuring objects
+            % rec_img.calc_colours.clim = [1]; % play around with this number and pick one that fits the specific phantom & measuring objects
             show_fem(rec_img)
 %             drawnow;
             
